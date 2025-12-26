@@ -1,5 +1,5 @@
 {
-  "name": "astro-bento-portfolio",
+  "name": "portfolio-redcap",
   "type": "module",
   "version": "0.0.2",
   "scripts": {
@@ -34,6 +34,7 @@
     "svelte": "^5.45.6"
   },
   "devDependencies": {
+    "@iconify-json/simple-icons": "^1.2.63",
     "@types/d3": "^7.4.3",
     "@typescript-eslint/parser": "^8.48.1",
     "@unocss/astro": "^66.5.10",

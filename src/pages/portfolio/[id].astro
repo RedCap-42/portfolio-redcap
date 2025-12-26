@@ -1,0 +1,64 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { portfolioData } from "../../data/portfolio";
+import ProjectGallery from "../../components/Portfolio/ProjectGallery.svelte";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return portfolioData.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<script>
+  import { animate, type AnimationSequence } from "motion";
+  import { loaderAnimation } from "../../lib/constants";
+
+  const sequence = [loaderAnimation];
+  animate(sequence as AnimationSequence);
+</script>
+
+<Layout
+  description={project.description || `Détails pour ${project.title}`}
+  title={`${project.title} - Portfolio`}
+>
+  <main class="w-full min-h-screen max-w-6xl mx-auto p-4 md:p-8 text-white">
+    <!-- Navigation -->
+    <a
+      class="inline-flex items-center text-neutral-400 hover:text-white mb-8 transition-colors"
+      href="/portfolio"
+    >
+      <span class="mr-2">←</span> Retour au Portfolio
+    </a>
+
+    <!-- Header -->
+    <header class="mb-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+        <div>
+          <span class="text-sm font-mono text-primary-400 bg-neutral-900 px-2 py-1 rounded border border-neutral-800">
+            {project.category}
+          </span>
+          <h1 class="text-4xl md:text-6xl font-bold mt-4 mb-2">{project.title}</h1>
+        </div>
+      </div>
+      
+      {project.description && (
+        <p class="text-xl text-neutral-300 max-w-2xl leading-relaxed">
+          {project.description}
+        </p>
+      )}
+    </header>
+
+    <!-- Gallery Grid with Lightbox -->
+    <ProjectGallery 
+      client:load 
+      images={project.images} 
+      title={project.title} 
+    />
+  </main>
+</Layout>

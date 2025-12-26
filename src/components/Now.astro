@@ -3,15 +3,39 @@ import Card from "./Card/index.astro";
 import Pulse from "./Pulse.astro";
 ---
 
+<script>
+  const el = document.getElementById("now-ascii");
+  if (el) {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&*+=-:;.,?/\\|()[]{}";
+    const length = 14;
+    let t = 0;
+    const tick = () => {
+      t += 1;
+      let s = "";
+      for (let i = 0; i < length; i++) {
+        const idx = (t * 7 + i * 13 + Math.floor(Math.random() * 17)) % chars.length;
+        s += chars[idx];
+      }
+      el.textContent = s;
+    };
+
+    tick();
+    const id = window.setInterval(tick, 70);
+    window.addEventListener("beforeunload", () => window.clearInterval(id), {
+      once: true,
+    });
+  }
+</script>
+
 <Card colSpan="md:col-span-1" rowSpan="md:row-span-2">
   <div class="flex justify-between w-full items-start mb-2">
     <div class="flex flex-col">
-      <h2>Now</h2>
-      <a href="https://sive.rs/nowff" target="_blank">
-        <span class="text-xs text-gray-500 cursor-pointer">what's that ?</span>
-      </a>
+      <h2>En ce moment</h2>
+      <span class="text-xs text-gray-500">Je travaille sur…</span>
     </div>
     <Pulse />
   </div>
-  <p class="text-xs">Currently working fulltime</p>
+  <p class="text-xs">
+    Je travaille sur <span id="now-ascii" style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;"></span>
+  </p>
 </Card>

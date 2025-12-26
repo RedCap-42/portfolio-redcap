@@ -1,34 +1,35 @@
 ---
 import Card from "./Card/index.astro";
 import { LINKS } from "../lib/constants";
+import { Icon } from "astro-icon/components";
 ---
 
 <Card colSpan="md:col-span-1" rowSpan="md:row-span-4">
   <div class="h-full">
     <header class="flex items-center">
       <h1 class="text-white text-xl font-bold">
-        Let's start working together!
+        Travaillons ensemble !
       </h1>
     </header>
     <address class="flex flex-col mt-4">
-      <h2 class="text-gray-500">Contact Details</h2>
-      <p>contact@gianmarcocavallo.com</p>
-      <p>Italy</p>
+      <h2 class="text-gray-500">Mes Coordonnées</h2>
+      <p>runningsimon65@gmail.com</p>
+      <p>France</p>
     </address>
     <div class="flex flex-col mt-4 w-fit">
-      <h2 class="text-gray-500">Socials</h2>
-      <ul>
-        <li>
-          <a href={LINKS.linkedin} target="_blank">Linkedin</a>
+      <h2 class="text-gray-500">Réseaux Sociaux</h2>
+      <ul class="list-none p-0">
+        <li class="flex items-center gap-2 mb-2">
+          <Icon name="ri:instagram-fill" class="h-6 w-6" />
+          <a href={LINKS.instagram} target="_blank">Instagram</a>
         </li>
-        <li>
-          <a href={LINKS.github} target="_blank">Github</a>
+        <li class="flex items-center gap-2 mb-2">
+          <Icon name="simple-icons:strava" class="h-6 w-6" />
+          <a href={LINKS.strava} target="_blank">Strava</a>
         </li>
-        <li>
-          <a href={LINKS.medium} target="_blank">Medium</a>
-        </li>
-        <li>
-          <a href={LINKS.discord} target="_blank">Discord</a>
+        <li class="flex items-center gap-2 mb-2">
+          <Icon name="simple-icons:fiverr" class="h-6 w-6" />
+          <a href={LINKS.fiverr} target="_blank">Fiverr</a>
         </li>
       </ul>
     </div>
