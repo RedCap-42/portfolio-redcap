@@ -81,6 +81,18 @@ export const portfolioData: PortfolioItem[] = [
       '/Portfolio/3d Général/VFXSteveAvecBob/eeeea.mp4',
     ],
   },
+  {
+    id: 'factor-bike',
+    title: 'Factor Bike',
+    category: '3D Général',
+    coverImage: '/Portfolio/3d Général/FactorBike/colorpng.png',
+    images: [
+      '/Portfolio/3d Général/FactorBike/colorpng.png',
+      '/Portfolio/3d Général/FactorBike/colorpng2.png',
+      '/Portfolio/3d Général/FactorBike/blackandwhyte.png',
+      '/Portfolio/3d Général/FactorBike/BLACKANDWHYTEBLUR.png',
+    ],
+  },
 
   // Pets Minecraft
   {
